@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmesFlix - Descubra seus filmes favoritos</title>
+    <meta name="description" content="Descubra e explore filmes de todas as categorias com informações detalhadas">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Skip Link para acessibilidade -->
+    <a href="#main-content" class="skip-link">Pular para conteúdo principal</a>
+
+    <!-- Região de anúncios para screen readers -->
+    <div id="announcements" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo" aria-label="FilmesFlix - Página inicial">
+                    🎬 FilmesFlix
+                </a>
+                
+                <div class="search-container" role="search">
+                    <label for="movie-search" class="sr-only">Buscar filmes</label>
+                    <div style="position: relative;">
+                        <span class="search-icon" aria-hidden="true">🔍</span>
+                        <input 
+                            type="search" 
+                            id="movie-search" 
+                            class="search-input"
+                            placeholder="Busque por filmes..."
+                            autocomplete="off"
+                            aria-describedby="search-help"
+                        >
+                        <div id="search-loading" class="loading" aria-hidden="true"></div>
+                    </div>
+                    <div id="search-help" class="sr-only">
+                        Digite pelo menos 2 caracteres para iniciar a busca
+                    </div>
+                    <div id="search-status" class="status-region" role="status" aria-live="polite"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main-content" role="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>Descubra Filmes Incríveis</h1>
+                <p>Explore nossa coleção com milhares de filmes de todas as categorias e épocas</p>
+            </section>
+
+            <!-- Search Results (initially hidden) -->
+            <section id="search-results" class="movies-section" style="display: none;" aria-labelledby="search-results-title">
+                <h2 id="search-results-title" class="section-title">Resultados da Busca</h2>
+                <div id="search-results-grid" class="movies-grid" role="list" aria-label="Filmes encontrados na busca"></div>
+            </section>
+
+            <!-- Popular Movies -->
+            <section class="movies-section" aria-labelledby="popular-title">
+                <h2 id="popular-title" class="section-title">Filmes Populares</h2>
+                <div id="popular-movies" class="movies-grid" role="list" aria-label="Lista de filmes populares"></div>
+            </section>
+
+            <!-- Action Movies -->
+            <section class="movies-section" aria-labelledby="action-title">
+                <h2 id="action-title" class="section-title">Filmes de Ação</h2>
+                <div id="action-movies" class="movies-grid" role="list" aria-label="Lista de filmes de ação"></div>
+            </section>
+
+            <!-- Comedy Movies -->
+            <section class="movies-section" aria-labelledby="comedy-title">
+                <h2 id="comedy-title" class="section-title">Comédias</h2>
+                <div id="comedy-movies" class="movies-grid" role="list" aria-label="Lista de filmes de comédia"></div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Modal for Movie Details -->
+    <div 
+        id="movie-modal" 
+        class="modal" 
+        role="dialog" 
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+        aria-hidden="true"
+    >
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="modal-title" class="modal-title"></h2>
+                <button 
+                    type="button" 
+                    class="close-button"
+                    aria-label="Fechar detalhes do filme"
+                    data-action="close-modal"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </header>
+            
+            <div class="modal-body">
+                <div id="modal-description" class="movie-details">
+                    <!-- Movie details will be populated here -->
+                </div>
+                
+                <div id="movie-additional-info" class="movie-info-grid">
+                    <!-- Additional movie info will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="base.js"></script>
+    <script src="worker.js></script>
+
+</body>
+</html>
